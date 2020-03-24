@@ -1,0 +1,211 @@
+%!ps
+% This is a script for the boardgame Railway Rivals
+% You can design a hexmap in this text editor
+% At the end of this page you find the code.
+% 2020-March-22 -- Martin Panusch
+
+/mm{2.93877551 mul}def
+/mt{moveto}def
+/rl{rlineto}def
+/cp{closepath}def
+/st{stroke}def
+/tl{translate}def
+
+/hex{
+0 -6 mt 6 3 rl 0 6 rl -6 3 rl -6 -3 rl 0 -6 rl cp st
+}def
+/hexlv1 {
+gsave 0 -6 mt 6 3 rl 0 6 rl -6 3 rl -6 -3 rl 0 -6 rl cp 0.9 1 0.8 setrgbcolor fill grestore
+}def
+/hexlv2 {
+gsave 0 -6 mt 6 3 rl 0 6 rl -6 3 rl -6 -3 rl 0 -6 rl cp 1 0.9 0.7 setrgbcolor fill grestore
+}def
+/hexlv3 {
+gsave 0 -6 mt 6 3 rl 0 6 rl -6 3 rl -6 -3 rl 0 -6 rl cp 0.6 setgray fill grestore
+}def
+
+
+/_{hex 12 0 tl}def %empty
+
+/i{hexlv1 hex -4  -1 mt 8 0 rl st -2 -2 mt 4 0 rl st 12 0 tl}def %Plain
+/O{hexlv1 hex 0 -4 mt 0 4 rl st 0 2 2 0 360 arc st 12 0 tl}def %Tree
+/AA{hexlv3 hex -3 -2 mt 6 0 rl -3 5 rl cp st 12 0 tl}def %Triangle
+/T{hexlv1 hex 0 0 2.5 0 360 arc 1 0.5 0.5 setrgbcolor fill 0 0 2.5 0 360 arc 0 setgray st 12 0 tl}def %Town
+/H{hexlv1 hex 0.2 0.6 0.8 setrgbcolor 0 0 4.5 0 360 arc fill 1 setgray 0 -4 mt 0 8 rl st -4 -2 mt 8 4 rl st 4 -2 mt -8 4 rl st 12 0 tl 0 setgray}def %Hextar-Hagal
+
+
+/church{ gsave  scale tl 0 0 mt 0 4 rl -2 0 rl 0 -4 rl cp 1 setgray fill 0 4 mt -1 4 rl -1 -4 rl cp 1 0.5 0.5 setrgbcolor fill -2 2 mt 0 2 rl -3 0 rl -1 -2 rl cp 1 0.5 0.5 setrgbcolor fill -2 0 mt 0 2 rl -4 0 rl 0 -2 rl cp 1 setgray fill 0 0 mt 0 4 rl -2 0 rl 0 -4 rl cp 0 setgray st
+0 4 mt -1 4 rl -1 -4 rl cp 0 setgray st -2 2 mt 0 2 rl -3 0 rl -1 -2 rl cp 0 setgray st  -2 0 mt 0 2 rl -4 0 rl 0 -2 rl cp 0 setgray st grestore}def
+
+/haus{ gsave  scale tl 0 0 mt 0 2 rl -1 2 rl -1 -2 rl 0 -2 rl cp  1 setgray fill -1 4 mt -4 0 rl -1 -2 rl 4 0 rl cp 1 0.5 0.5 setrgbcolor fill -2 0 mt 0 2 rl -4 0 rl 0 -2 rl cp  1 setgray fill  
+0 0 mt 0 2 rl -1 2 rl -1 -2 rl 0 -2 rl cp  0 setgray st  -1 4 mt -4 0 rl -1 -2 rl 4 0 rl cp 0 setgray st  -2 0 mt 0 2 rl -4 0 rl 0 -2 rl cp  0 setgray st  grestore }def
+
+/stall{ gsave scale tl 0 0 mt 0 2 rl -4 0 rl 0 -2 rl cp 1 setgray fill  0 2 mt -1 2 rl -2 0 rl -1 -2 rl cp 1 0.5 0.5 setrgbcolor fill 0 0 mt 0 2 rl -4 0 rl 0 -2 rl cp   0 setgray st 
+0 2 mt -1 2 rl -2 0 rl -1 -2 rl cp 0 setgray st  grestore }def
+
+
+/CT0{ hexlv1 hex 4 -1 1 1 haus 5 -2 -1 1 haus 2 -3 1 1 church 2 -4 1 1 stall 12 0 tl }def
+/CT1{ hexlv1 hex 4 0 1 1 stall 5 -1 -1 1 church 0 -2.5 1 1 stall 5 -3 1 1 haus 2 -4 -1 1 church 12 0 tl }def
+/CT2{ hexlv1 hex 5 0 -1 1 haus 5 -1 1 1 haus 4 -2 -1 1 church 5 -3 1 1 stall 2 -4 -1 1 haus 12 0 tl }def 
+/CT3{ hexlv1 hex 5 0 -1 1 haus 5 -1 1 1 haus 5 -2 1 1 stall 3 -3 -1 1 church 0 -4 -1 1 stall 12 0 tl }def 
+/CT4{ hexlv1 hex 2 0  1 1 church 5 -1  1 1 stall 5 -2 1 1 haus 4 -3 -1 1 haus 12 0 tl }def
+/CT5{ hexlv1 hex 2 0  -1 1 church 5 -2  -1 1 haus 5 -3   1 1 haus 2 -4  1 1 stall 12 0 tl}def 
+/CT6{ hexlv1 hex 3 -1  1 1 church 5 -3  -1 1 haus 5 -3   1 1 haus 12 0 tl }def 
+/CT7{ hexlv1 hex 5 -1 -1 1 haus 5 -1 1 1 haus 3 -2 1 1 church 2 -4 -1 1 haus 12 0 tl }def
+/CT8{ hexlv1 hex 5 0 -1 1 haus 5 -1  1 1 church 5 -2 1 1 stall 5 -3 -1 1 church 1 -4 -1 1 stall 12 0 tl}def
+/CT9{ hexlv1 hex 2 0  1 1 church 5 -1  1 1 stall 5 -2 1 1 haus 4 -2 -1 1 haus 2.5 -4 1 1 stall 12 0 tl}def
+
+/MT0{hexlv2 hex  -5 -1 mt 1 1 rl 3 -3 rl st -5 1 mt 2 2 rl 2 -2 rl st -3 -1 mt 3 3 rl 3 -3 rl st 1 1 mt 2 2 rl 2 -2 rl st 12 0 tl} def %Mountain0
+/MT1{hexlv2 hex  -5 -1 mt 1 1 rl 3 -3 rl st -2 2 mt 2 2 rl 2 -2 rl st -3 -1 mt 3 3 rl 3 -3 rl st 1 1 mt 2 2 rl 2 -2 rl st 12 0 tl}def %Mountain1
+/MT2{hexlv2 hex  -5 -1 mt 1 1 rl 3 -3 rl st -2 2 mt 2 2 rl 2 -2 rl st -3 -1 mt 3 3 rl 3 -3 rl st 1 1 mt 2 2 rl 2 -2 rl st 1 -3 mt 3 3 rl 1 -1 rl st 12 0 tl}def %Mountain2
+/MT3{hexlv2 hex  -5 -1 mt 1 1 rl 3 -3 rl st -2 2 mt 2 2 rl 2 -2 rl st -3 -1 mt 3 3 rl 4 -4 rl st 1 1 mt 2 2 rl 2 -2 rl st -5 1 mt 2 2 rl 2 -2 rl st 12 0 tl}def %Mountain3
+/MT4{hexlv2 hex  -5 -1 mt 1 1 rl 3 -3 rl st -2 2 mt 2 2 rl 3 -3 rl st -5 1 mt 2 2 rl 3 -3 rl st 1 -3 mt 3 3 rl 1 -1 rl st -2 -2 mt 3 3 rl 2 -2 rl st 12 0 tl}def %Mountain4
+/MT5{hexlv2 hex  -5 -2 mt 3 3 rl 3 -3 rl st -4 1 mt 2 2 rl 2 -2 rl st -1 2 mt 2 2 rl 2 -2 rl st -1 0 mt 2 2 rl 3 -3 rl st 0 -3 mt 2 2 rl 2 -2 rl st 12 0 tl}def %Mountain5
+/MT6{hexlv2 hex  -5 -2 mt 3 3 rl 2 -2 rl st -4 -3 mt 2 2 rl 2 -2 rl st -3 2 mt 2 2 rl 2 -2 rl st -1 0 mt 3 3 rl 2 -2 rl st -1 -2 mt 3 3 rl 3 -3 rl st 12 0 tl}def %Mountain6
+/MT7{hexlv2 hex  -5 -1 mt 2 2 rl 1 -1 rl st -4 -2 mt 3 3 rl 2 -2 rl st -1 -3 mt 3 3 rl 3 -3 rl st -3 2 mt 2 2 rl 2 -2 rl st  0 1 mt 2 2 rl 2 -2 rl st 12 0 tl}def %Mountain7
+/MT8{hexlv2 hex  -5 -2 mt 2 2 rl 1 -1 rl st -4 -3 mt 3 3 rl 3 -3 rl st -4 1 mt 3 3 rl 2 -2 rl st  0 1 mt 2 2 rl 3 -3 rl st  0 -1 mt 2 2 rl 3 -3 rl st 12 0 tl}def %Mountain8
+/MT9{hexlv2 hex  -4 -3 mt 3 3 rl 3 -3 rl st 0 -1 mt 2 2 rl 3 -3 rl st -5 1 mt 2 2 rl 1 -1 rl st -3 1 mt 3 3 rl 2 -2 rl st 1 1 mt 2 2 rl 2 -2 rl st 12 0 tl}def %Mountain9
+
+/PT0{hexlv1 hex -4  -1 mt 8 0 rl st -2 -2 mt 4 0 rl st 12 0 tl}def %Plain0
+/PT1{hexlv1 hex -3  -1 mt 7 0 rl st -2 -2 mt 4 0 rl st 12 0 tl}def %Plain1
+/PT2{hexlv1 hex -4  -1 mt 7 0 rl st -2 -2 mt 4 0 rl st 12 0 tl}def %Plain2
+/PT3{hexlv1 hex -4  -1 mt 8 0 rl st -3 -2 mt 5 0 rl st 12 0 tl}def %Plain3
+/PT4{hexlv1 hex -4  -1 mt 8 0 rl st -3 -2 mt 4 0 rl st 12 0 tl}def %Plain4
+/PT5{hexlv1 hex -4  -1 mt 8 0 rl st -2 -2 mt 5 0 rl st 12 0 tl}def %Plain5
+/PT6{hexlv1 hex -3  -1 mt 7 0 rl st -3 -2 mt 4 0 rl st 12 0 tl}def %Plain6
+/PT7{hexlv1 hex -3  -1 mt 7 0 rl st -2 -2 mt 5 0 rl st 12 0 tl}def %Plain7
+/PT8{hexlv1 hex -4  -1 mt 7 0 rl st -3 -2 mt 4 0 rl st 12 0 tl}def %Plain8
+/PT9{hexlv1 hex -4  -1 mt 7 0 rl st -2 -2 mt 5 0 rl st 12 0 tl}def %Plain9
+
+/A{
+    rand 10 mod                 % CASE Pivot of:
+   { dup 0 eq { MT0   exit } if	% 0: BlankProc;
+     dup 1 eq { MT1   exit } if	% 1: TabProc;
+     dup 2 eq { MT2   exit } if	% 2: NewlineProc;  usw. usf.
+     dup 3 eq { MT3   exit } if	% 
+	 dup 4 eq { MT4   exit } if	% 
+	 dup 5 eq { MT5   exit } if	% 
+	 dup 6 eq { MT6   exit } if	% 
+	 dup 7 eq { MT7   exit } if	% 
+	 dup 8 eq { MT8   exit } if	% 
+	 dup 9 eq { MT9   exit } if	% 
+     AA 		              	% hier kann ein ELSE-Fall stehen
+     exit
+   } loop
+     pop
+  }def
+  
+  
+/C{
+    rand 10 mod                 % CASE Pivot of:
+   { dup 0 eq { CT0   exit } if	% 0: BlankProc;
+     dup 1 eq { CT1   exit } if	% 1: TabProc;
+     dup 2 eq { CT2   exit } if	% 2: NewlineProc;  usw. usf.
+     dup 3 eq { CT3   exit } if	% 
+	 dup 4 eq { CT4   exit } if	% 
+	 dup 5 eq { CT5   exit } if	% 
+	 dup 6 eq { CT6   exit } if	% 
+	 dup 7 eq { CT7   exit } if	% 
+	 dup 8 eq { CT8   exit } if	% 
+	 dup 9 eq { CT9   exit } if	% 
+     AA 		           	    % hier kann ein ELSE-Fall stehen
+     exit
+   } loop
+     pop
+  }def   
+  
+  
+/i{
+    rand 10 mod                 % CASE Pivot of:
+   { dup 0 eq { PT0   exit } if	% 0: BlankProc;
+     dup 1 eq { PT1   exit } if	% 1: TabProc;
+     dup 2 eq { PT2   exit } if	% 2: NewlineProc;  usw. usf.
+     dup 3 eq { PT3   exit } if	% 
+	 dup 4 eq { PT4   exit } if	% 
+	 dup 5 eq { PT5   exit } if	% 
+	 dup 6 eq { PT6   exit } if	% 
+	 dup 7 eq { PT7   exit } if	% 
+	 dup 8 eq { PT8   exit } if	% 
+	 dup 9 eq { PT9   exit } if	% 
+     AA 		           	    % hier kann ein ELSE-Fall stehen
+     exit
+   } loop
+     pop
+  }def   
+
+/n{0 -9 tl gsave}def   % Zeilenanfang
+/r1{grestore 6 0 tl}def %Neue Zeile ungerade Zeilennummer
+/r2{grestore -6 0 tl}def %Neue Zeile gerade Zeilennummer
+
+0 mm 297 mm tl %Oben links anfangen
+12 mm -25 mm tl %Genaue Position
+
+1 mm 1 mm scale % Ab jetzt alles in Millimeter
+1 srand
+13 12 div 15 12 div scale % Better Hexagons
+0.4 0.4 scale
+0.25 setlinewidth
+
+%--------------------------------------------------------
+% n : Starts a new line
+% r1: Ends the odd lines
+% r2: Ends the even lines
+% A : Mountains
+% i : Plain
+% C : City
+% T : Town (Red circle)
+
+
+
+n _ _ _ _ _ _ _ _ _ A A T _ r1
+n  _ _ _ _ _ _ A A A A i A _ r2
+n _ _ _ _ _ _ A A A i A i A _ r1
+n  T i _ _ A T A i A i C i A A A T _ i A T _ r2
+n i i A A A A i i A A i i i A i i A T A i A A i T r1
+n  i i A A A i A A A i A A A A A i i A i A A A i A r2
+n T i C i A i i i i i A A A i i C A A i i A i C A A r1 % HOF
+n  A i i A i C A A A C i i A i A i i i A A A A i A A r2
+n i A i A i A i i i i i A i A i i A i i i A i i A T A r1
+n  A i i i A i i A i A i A i i i A A A A i i A i A T r2
+n _ A i A T A i C i A i A A A C A A A A i A A i i A A r1
+n  A A T A i A i i i A A i i i i A A A A C A A i A A A r2 %Bayreuth
+n A A A i A T i A i i i A A A A i i A A i i i i i i A A r1
+n  _ _ _ _ _ i i A i A i i A i i A A A i A i A A i A A A r2
+n _ _ _ _ _ A i A A i i A i A i A i A i A A i A i i A A r1
+n  _ _ _ _ _ _ A i i i A i i i A i i i A i i i C A A A r2 %Weiden
+n _ _ _ _ _ _ A i A i A A A C C i i i i i A A i A i A A r1 %Nuernberg
+n  _ _ _ _ _ _ A A A i A A i i i A A A i i A A i i A A r2
+n _ _ _ _ _ _ T i i i C i i A i i i A A A i i i A A A A r1
+n  _ _ _ _ _ _ A i A A i A A i A A i A A i A C A i A A A r2 %Schwandorf
+n _ _ _ _ _ _ _ A i A A i i i i A A i A A A A i i A i A T A r1
+n  _ _ _ _ _ _ A A i i i i i A i i i i i i A i A i i C A A A r2 %Chur 
+n _ _ _ _ _ _ _ A A i A A i A A A i A A i A i i A A A i i A A r1
+n  _ _ _ _ _ _ _ T C A A i i i i i i i A i C i i i A i i A A A r2
+n _ _ _ _ _ _ A A A i i i A i i A A A i i i i i A A A A i A A T r1
+n  _ _ _ _ _ _ A A A A i A A A i i i i i i A i i i i A A i A A A r2
+n _ _ _ _ _ _ A i i i i i i i i C i i i A A i A i i i i A i C A A A r1 %Zwiesel
+n  _ _ _ T i i i A A i i A A A i i A i A i A i i A i i C A A i A A A r2 %Deggendorf
+n _ _ _ i C i i i A i A i A i i A i i A i A i A A A i i i i A i A A r1 %Neu Ulm
+n  _ _ _ A i A i i i A i A i A A i A A A i i i i i i i i i A A A i A i r2
+n _ _ _ A i A i A i i C i i A A i A A i i C A A A A i A i i i i i A A r1 %Landshut
+n  _ _ _ A i A i A A i i A A i i A i i A A i i A i A A A A i C i A A r2 %Passau
+n _ _ _ A i A i A i i i i i A i i i A A i A A i i i i i i A i T i i r1
+n  _ _ _ T C i i i i A i A i i i i i i i i i A i A A A A i i i i A r2 
+n _ _ _ i i i A i i i i i i i C i i A A A A i C i i i i A i i i _ A r1% Zeile mit Muenchen
+n  _ _ i A i A A i A i i A i i i i i A A i i i i i i i T i i i r2 %Zeile mit Amersee
+n _ _ i A A i i i A i A i i i A i A  i i i i i A i i i i r1  %Zeile mit Starnberger See
+n  T i T A C A i A A i C i A i A i A i i A A A i i i A A A r2 %Zeile mit Kempen und Weilheim
+n _ C i A i i A i A i i A i i i i i i i i i i i A i i A A A r1 %Zeile mit Lindau
+n  T A i i A i A H A A i A i A i i A A C i i A C i i T r2 % Zeile mit Rosenheim und Traunstein
+n _ _ A A i A i A A A i A H A H A H A i A i i i A i i i r1
+n  _ _ A H A A i A i C A A A A A A A i A A A A A i A A r2
+n _ _ A A A A A i i A i i A A A A A A i A A A A A H A A r1
+n  _ _ A A A A A A A A A T A A A A A T A A A A A A i A A r2
+n _ _ _ A A A A A A A A A A A A A A A A A A A A A A A A r1
+n  _ _ _ A A A A A A A A A A A A A A A A A A A A A A A A r2
+
+
+
+
+
+showpage
